@@ -1,0 +1,90 @@
+{%- assign p = section.settings.product -%}
+<section class="band"><div class="wrap sec split">
+ <div class="feat__gal">{% if p %}{% for m in p.media limit: 3 %}<div>{{ m | image_url: width: 1200 | image_tag: loading: 'lazy', alt: p.title, class: 'cover' }}</div>{% endfor %}{% else %}<div class="ph" style="position:absolute;inset:0">Choose a product</div>{% endif %}</div>
+ <div class="feat__info">
+  {% if section.settings.badge != blank %}<span class="badge badge--ink" style="font-size:13px;padding:7px 14px">{{ section.settings.badge }}</span>{% endif %}
+  <h2>{{ p.title | default: 'Featured product' }}</h2>
+  {% if p %}<div class="price"><strong>{{ p.price | money_without_trailing_zeros }}</strong>{% if p.compare_at_price > p.price %}<s>{{ p.compare_at_price | money_without_trailing_zeros }}</s><span class="badge">Save {{ p.compare_at_price | minus: p.price | money_without_trailing_zeros }}</span>{% endif %}</div>{% endif %}
+  {% if section.blocks.size > 0 %}<div class="stats">{% for b in section.blocks %}<div {{ b.shopify_attributes }}><strong>{{ b.settings.number }}</strong><span>{{ b.settings.label }}</span></div>{% endfor %}</div>{% endif %}
+  <p class="lead">{{ section.settings.text }}</p>
+  {% if section.settings.offer != blank %}<div class="offerbox"><i>2×</i><span>{{ section.settings.offer }}</span></div>{% endif %}
+  {% if p %}<div class="row" style="width:100%">
+   {% form 'product', p, data-add-form: '', style: 'flex:1 1 240px;display:flex' %}<input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}"><button class="btn btn--p btn--block" style="height:60px;font-size:17px" type="submit"{% unless p.available %} disabled{% endunless %}>{% if p.available %}Add to cart — {{ p.price | money_without_trailing_zeros }}{% else %}Sold out{% endif %}</button>{% endform %}
+   <a class="btn btn--o" style="height:60px" href="{{ p.url }}">Full details</a></div>{% endif %}
+ </div></div></section>
+{% schema %}
+{
+  "name": "Featured product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "text",
+      "id": "badge",
+      "label": "Badge",
+      "default": "Bestseller"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "22 foam noodles in three lengths, 14 connectors, wheels, eyes, straps, a ball, steering wheel, play phone and a booklet of 28 creations. Ready to build out of the box."
+    },
+    {
+      "type": "textarea",
+      "id": "offer",
+      "label": "Offer box",
+      "default": "Buy one, get a second set for $99. Double the pieces, twice the builds. Auto-applied at checkout."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Number"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured product",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "50",
+            "label": "pieces"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "28",
+            "label": "guided builds"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "0",
+            "label": "tools or setup"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

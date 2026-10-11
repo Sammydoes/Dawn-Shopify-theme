@@ -1,0 +1,53 @@
+<section class="wrap sec"><div class="head"><h2>{{ section.settings.heading }}</h2><span class="muted">Tag <strong style="color:var(--ink)">{{ section.settings.handle }}</strong> to be featured</span></div>
+<div class="ugc">{% for b in section.blocks %}<div {{ b.shopify_attributes }}>{% assign fb = '' %}{% if forloop.first %}{% assign fb = 'kids-in-car-build.jpg' | asset_url %}{% endif %}{% render 'img', image: b.settings.image, fallback: fb, alt: '', cls: 'cover', sizes: '25vw' %}</div>{% endfor %}</div></section>
+{% schema %}
+{
+  "name": "Customer photos",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Built at home by <em>you.</em>"
+    },
+    {
+      "type": "text",
+      "id": "handle",
+      "label": "Handle",
+      "default": "@noodlelox"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "photo",
+      "name": "Photo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer photos",
+      "blocks": [
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        },
+        {
+          "type": "photo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

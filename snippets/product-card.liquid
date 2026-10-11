@@ -1,0 +1,25 @@
+{%- liquid
+ assign p = card_product
+ assign hover = p.media[1]
+-%}
+<article class="pcard">
+ <a href="{{ p.url }}" class="pcard__img">
+  {% if p.featured_media %}{{ p.featured_media | image_url: width: 900 | image_tag: loading: 'lazy', alt: p.title, class: 'cover pcard__a', widths: '300,500,700,900', sizes: '(min-width:900px) 30vw, 90vw' }}{% else %}<div class="ph cover">{{ p.title }}</div>{% endif %}
+  {% if hover and hover.media_type == 'image' %}{{ hover | image_url: width: 900 | image_tag: loading: 'lazy', alt: '', class: 'cover pcard__b' }}{% endif %}
+  <span class="pcard__badges">
+   {% unless p.available %}<span class="badge badge--ink">Sold out</span>{% elsif p.compare_at_price > p.price %}<span class="badge badge--pink">Save {{ p.compare_at_price | minus: p.price | money_without_trailing_zeros }}</span>{% endunless %}
+   {% for t in p.tags %}{% if t == 'bestseller' %}<span class="badge badge--yellow">Bestseller</span>{% endif %}{% endfor %}
+  </span>
+ </a>
+ {%- if p.available and p.variants.size == 1 -%}
+ {% form 'product', p, data-add-form: '', class: 'pcard__quick' %}
+  <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+  <button type="submit" class="btn btn--ink btn--block">Quick add — {{ p.price | money_without_trailing_zeros }}</button>
+ {% endform %}
+ {%- endif -%}
+ <div class="pcard__info">
+  <div class="pcard__row"><a class="pcard__title" href="{{ p.url }}">{{ p.title }}</a>
+   <span class="pcard__price"><strong>{{ p.price | money_without_trailing_zeros }}</strong>{% if p.compare_at_price > p.price %} <s>{{ p.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}</span></div>
+  {% if p.metafields.custom.subtitle != blank %}<span class="muted">{{ p.metafields.custom.subtitle }}</span>{% endif %}
+ </div>
+</article>

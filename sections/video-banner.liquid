@@ -1,0 +1,42 @@
+<section class="wrap sec"><a class="vid" href="{{ section.settings.video_url | default: '#' }}" target="_blank" rel="noopener">{% render 'img', image: section.settings.image, fallback: '/cdn/shop/files/DSC_9093.jpg?width=2000', alt: '', cls: 'cover' %}
+<div class="vid__t"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><span class="play"><i></i>{{ section.settings.label }}</span></div></a></section>
+{% schema %}
+{
+  "name": "Video banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background image"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "Video link (opens in new tab)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Watch · 60 seconds"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "From box to <em>pirate ship</em> in minutes."
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Button label",
+      "default": "Play the film"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video banner"
+    }
+  ]
+}
+{% endschema %}

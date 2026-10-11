@@ -1,0 +1,18 @@
+{
+  "sections": {
+    "story": {
+      "type": "our-story",
+      "settings": {
+        "image": "shopify://shop_images/image_8_copy.png",
+        "story": "<p>My name is Greg Olson (grandpa tufts). I wanted to share with you the reasons Noodlelox was designed, developed, and now sold worldwide. This product has been in testing and development for over three generations.</p><p>I am a Mechanical Engineer by training. I have worked in aerospace, communications, and the exercise and fitness industry for over 40 years. Most of this time I have spent designing, developing product for commercial and home fitness for the past 35 years. I have also worked as a garbageman, grocery store checkout and clerk, fast food server, martial arts instructor, draftsman, live in group home house parent for mentally handicapped adults, greenskeeper, lawn mowing, snow shoveling, corn detasseling to mention a few.</p><p>I still co-own and run a design business called Heavy Metal Barbell based in Minnesota. We design, develop, manufacture, and/or source and fulfill products for high-profile fitness influencers around the world.</p><p>Over the past thirty-plus years, my wife and I have raised five kids and are blessed with six granddaughters, with one more on the way. To say “we love kids” is an understatement. I have been involved in all levels of coaching for sports like hockey, soccer, tennis, track, football, karate, and Tae Kwon Do, to mention a few.</p><p>I was introduced to pool noodles over 30 years ago as a method to create shapes and designs. All of my 5 children, their friends, and now my 6 grandchildren have played with foam pool noodles that I have had at my house to build and create an unlimited number of creations. I have always said that with a better set of connectors the foam noodle building could be a very creative and fun toy system for kids of all ages (3-100). I kept telling myself that I should complete my design for these and get the product to market someday. I am now 66 and finally decided I should probably do this while I am still able. I have and continue to have a lot of fun watching and helping my kids, their friends, and now their kids (my grandchildren) build and design many, many types of creations: foam forts, creatures, vehicles, and just random things.</p>",
+        "quote": "I think I never outgrew my childhood of playing with Lincoln Logs, Erector Sets, and Tinker Toys.",
+        "story_2": "<p>I think one of the many advantages of Noodlelox is that it lets kids create objects that are more life-sized and interactive. It can also build great STEM and STEAM type values while creating a fun learning environment for everyone involved and also encourage kids to work together to create projects.</p>",
+        "mission": "Foster creativity and imagination through life-sized interactive toys. We aim to inspire and educate children by providing fun, immersive play experiences that develop essential skills like problem-solving, teamwork, and critical thinking. Committed to quality and safety, we ensure every toy is durable and safe for endless hours of creative exploration.",
+        "button_url": "shopify://products/noodlelox50piecekit"
+      }
+    }
+  },
+  "order": [
+    "story"
+  ]
+}

@@ -1,0 +1,10 @@
+<article class="wrap sec"><div class="crumbs"><a href="{{ blog.url }}">{{ blog.title }}</a></div>
+<header class="center" style="max-width:900px;margin:24px auto 0;display:flex;flex-direction:column;align-items:center;gap:18px"><div class="row small">{% if article.tags.first %}<span class="badge tag--yellow">{{ article.tags.first }}</span>{% endif %}<span class="muted">{{ article.published_at | date: '%b %-d, %Y' }} · {{ article.author }}</span></div><h1 style="font-size:clamp(40px,5.6vw,84px)">{{ article.title }}</h1></header>
+{% if article.image %}<div class="art__hero">{{ article.image | image_url: width: 2000 | image_tag: class: 'cover', alt: article.title, loading: 'eager' }}</div>{% endif %}
+<div class="prose">{{ article.content }}</div>
+<div class="row" style="justify-content:center;margin-top:48px"><a class="btn btn--o" href="{{ blog.url }}">← Back to the journal</a></div></article>
+{% schema %}
+{
+  "name": "Article"
+}
+{% endschema %}

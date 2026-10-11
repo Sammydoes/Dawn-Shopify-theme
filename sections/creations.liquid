@@ -1,0 +1,119 @@
+<section class="sec" id="creations" style="padding-bottom:clamp(40px,5vw,72px)">
+ <div class="wrap head"><div style="display:flex;flex-direction:column;gap:12px;max-width:680px"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2></div>
+ <div class="row"><span class="muted">{{ section.settings.note }}</span>{% if section.settings.link_label != blank %}<a class="btn btn--o" style="height:48px;font-size:15px" href="{{ section.settings.link_url }}">{{ section.settings.link_label }}</a>{% endif %}</div></div>
+ <div class="rail">{% for b in section.blocks %}<a class="crea" href="{{ b.settings.link | default: '#' }}" {{ b.shopify_attributes }}><div class="crea__img">{% render 'img', image: b.settings.image, alt: b.settings.name, cls: 'contain' %}{% if b.settings.level != blank %}<span class="badge">{{ b.settings.level }}</span>{% endif %}</div><div class="crea__row"><strong>{{ b.settings.name }}</strong><span class="muted small">{{ b.settings.time }}</span></div></a>{% endfor %}</div>
+</section>
+{% schema %}
+{
+  "name": "Creations rail",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "One set · endless creations"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What will they <em>build</em> today?"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "default": "28 ideas in the booklet, hundreds more in their heads"
+    },
+    {
+      "type": "text",
+      "id": "link_label",
+      "label": "Link label",
+      "default": "All creations"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "creation",
+      "name": "Creation",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (white background render)"
+        },
+        {
+          "type": "text",
+          "id": "level",
+          "label": "Level",
+          "default": "Easy"
+        },
+        {
+          "type": "text",
+          "id": "time",
+          "label": "Time",
+          "default": "10 min"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Creations rail",
+      "blocks": [
+        {
+          "type": "creation",
+          "settings": {
+            "name": "Playhouse"
+          }
+        },
+        {
+          "type": "creation",
+          "settings": {
+            "name": "Rocket"
+          }
+        },
+        {
+          "type": "creation",
+          "settings": {
+            "name": "School Bus"
+          }
+        },
+        {
+          "type": "creation",
+          "settings": {
+            "name": "Helicopter"
+          }
+        },
+        {
+          "type": "creation",
+          "settings": {
+            "name": "Race Car"
+          }
+        },
+        {
+          "type": "creation",
+          "settings": {
+            "name": "Phone Booth"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

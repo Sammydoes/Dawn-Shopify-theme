@@ -1,0 +1,5 @@
+{%- comment -%}Params: image, fallback (url), alt, cls, sizes{%- endcomment -%}
+{%- assign sz = sizes | default: '100vw' -%}
+{%- if image -%}{{ image | image_url: width: 1600 | image_tag: loading: 'lazy', alt: alt, class: cls, widths: '400,700,1000,1400,1800', sizes: sz }}
+{%- elsif fallback != blank -%}<img src="{{ fallback }}" alt="{{ alt | escape }}" loading="lazy" class="{{ cls }}">
+{%- else -%}<div class="ph {{ cls }}">{{ alt }}</div>{%- endif -%}

@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "help": {
+      "type": "help-page",
+      "settings": {},
+      "blocks": {
+        "card_0": {
+          "type": "card",
+          "settings": {
+            "title": "Shipping",
+            "text": "Free shipping on all orders.",
+            "bg": "#FBE3EA",
+            "link": "#faq"
+          }
+        },
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "title": "Returns",
+            "text": "30 days from delivery, no restocking fee.",
+            "bg": "#FDF3CF",
+            "link": "#faq"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "title": "Warranty",
+            "text": "1-year limited warranty on every order.",
+            "bg": "#DDF2F3",
+            "link": "#faq"
+          }
+        },
+        "faq_0": {
+          "type": "faq",
+          "settings": {
+            "q": "How many creations can one set make?",
+            "a": "<p>Hundreds. Each set includes a booklet of 28 designs.</p>"
+          }
+        },
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "q": "What is the warranty?",
+            "a": "<p>Noodlelox has a 1-year limited warranty.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "q": "What is your return policy?",
+            "a": "<p>Contact us within 30 days of delivery if you’re not satisfied. There is no restocking fee.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_0",
+        "card_1",
+        "card_2",
+        "faq_0",
+        "faq_1",
+        "faq_2"
+      ]
+    }
+  },
+  "order": [
+    "help"
+  ]
+}

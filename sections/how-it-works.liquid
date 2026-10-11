@@ -1,0 +1,65 @@
+<section class="band"><div class="wrap sec"><h2 style="max-width:820px;margin-bottom:40px">{{ section.settings.heading }}</h2><div class="steps">{% for b in section.blocks %}<div class="step" {{ b.shopify_attributes }}><div class="step__i">{% render 'img', image: b.settings.image, alt: b.settings.title, cls: 'cover', sizes: '(min-width:900px) 33vw, 100vw' %}</div><div class="step__t"><span>0{{ forloop.index }}</span><h3>{{ b.settings.title }}</h3><p>{{ b.settings.text }}</p></div></div>{% endfor %}</div></div></section>
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Push. Twist. <em>Play.</em>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "How it works",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "title": "Open the box",
+            "text": "No tools, no batteries, no setup."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Snap it together",
+            "text": "Quick Connection holds tight and pulls apart easily."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "title": "Climb in and play",
+            "text": "Life-sized builds kids can sit in, steer and share."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

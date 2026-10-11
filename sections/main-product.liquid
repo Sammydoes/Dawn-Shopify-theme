@@ -1,0 +1,157 @@
+{%- assign cur = product.selected_or_first_available_variant -%}
+{%- assign multi = true -%}{%- if product.has_only_default_variant -%}{%- assign multi = false -%}{%- endif -%}
+<div class="wrap crumbs" style="padding-top:18px"><a href="{{ routes.root_url }}">Home</a><span>/</span>{% if collection %}<a href="{{ collection.url }}">{{ collection.title }}</a>{% else %}<a href="{{ routes.all_products_collection_url }}">Shop</a>{% endif %}<span>/</span><span style="color:var(--ink)">{{ product.title }}</span></div>
+<section class="wrap pdp">
+ <div class="gal">
+  <div class="gal__main">
+   {%- for m in product.media -%}{%- assign ld = 'lazy' -%}{%- if forloop.first -%}{%- assign ld = 'eager' -%}{%- endif -%}{%- assign alt_t = m.alt | default: product.title -%}<div class="gal__slide{% if forloop.first %} on{% endif %}">{{ m.preview_image | image_url: width: 1400 | image_tag: alt: alt_t, loading: ld, widths: '600,900,1200,1400', sizes: '(min-width:900px) 45vw, 100vw' }}</div>{%- endfor -%}
+   {% if product.compare_at_price > product.price %}<span class="badge badge--yellow" style="position:absolute;top:18px;left:18px;z-index:2">Save {{ product.compare_at_price | minus: product.price | money_without_trailing_zeros }}</span>{% endif %}
+   {% if product.media.size > 1 %}<div class="gal__arrows"><button data-gal-step="-1" aria-label="Previous">‹</button><button data-gal-step="1" aria-label="Next">›</button></div>{% endif %}
+  </div>
+  {% if product.media.size > 1 %}<div class="gal__thumbs">{% for m in product.media %}<button data-thumb="{{ forloop.index0 }}" class="{% if forloop.first %}on{% endif %}" aria-label="Image {{ forloop.index }}">{{ m.preview_image | image_url: width: 200 | image_tag: alt: '', loading: 'lazy' }}</button>{% endfor %}</div>{% endif %}
+ </div>
+ <div class="buy" data-buybox>
+  {%- for b in section.blocks -%}
+  {%- case b.type -%}
+  {%- when 'title' -%}<h1 {{ b.shopify_attributes }}>{{ product.title }}</h1>
+  {%- when 'price' -%}<div class="price" {{ b.shopify_attributes }}><strong data-buy-price>{{ cur.price | money_without_trailing_zeros }}</strong>{% if cur.compare_at_price > cur.price %}<s>{{ cur.compare_at_price | money_without_trailing_zeros }}</s><span class="badge">Save {{ cur.compare_at_price | minus: cur.price | money_without_trailing_zeros }}</span>{% endif %}</div>
+  {%- when 'description' -%}<div class="buy__desc" {{ b.shopify_attributes }}>{{ product.description }}</div>
+  {%- when 'buy' -%}
+   <div {{ b.shopify_attributes }}>
+   {% form 'product', product, data-add-form: '', data-product-form: '' %}
+    <div style="display:flex;flex-direction:column;gap:22px">
+    {% if multi %}<div class="bundles" role="radiogroup"><span style="font-size:14px;font-weight:600">{{ b.settings.picker_label }}</span>
+     {% for v in product.variants %}<div class="bundle"><input type="radio" name="id" id="v{{ v.id }}" value="{{ v.id }}" data-variant-input data-name="{{ product.title | escape }} — {{ v.title | escape }}" data-price="{{ v.price | money_without_trailing_zeros }}" {% if v.id == cur.id %}checked{% endif %}{% unless v.available %} disabled{% endunless %}>
+      <label for="v{{ v.id }}"><span><b>{{ v.title }}</b></span><span class="pr">{{ v.price | money_without_trailing_zeros }}{% if v.compare_at_price > v.price %}<s>{{ v.compare_at_price | money_without_trailing_zeros }}</s>{% endif %}{% unless v.available %}<s>Sold out</s>{% endunless %}</span></label></div>{% endfor %}</div>
+    {% else %}<input type="hidden" name="id" value="{{ cur.id }}">{% endif %}
+    <div class="buyrow"><div class="qty"><button type="button" data-qty-step="-1" aria-label="Less">−</button><input type="number" name="quantity" value="1" min="1" aria-label="Quantity"><button type="button" data-qty-step="1" aria-label="More">+</button></div>
+     <button type="submit" class="btn btn--p"{% unless cur.available %} disabled{% endunless %}>{% if cur.available %}Add to cart{% else %}Sold out{% endif %}</button></div>
+    <div class="shoppay">{{ form | payment_button }}</div>
+    </div>
+   {% endform %}
+   </div>
+  {%- when 'assurances' -%}<div class="assure" {{ b.shopify_attributes }}><div><i style="background:var(--pink)"></i>{{ b.settings.a1 }}</div><div><i style="background:var(--yellow)"></i>{{ b.settings.a2 }}</div><div><i style="background:var(--teal)"></i>{{ b.settings.a3 }}</div></div>
+  {%- when 'accordion' -%}<div class="acc" {{ b.shopify_attributes }}><details {% if b.settings.open %}open{% endif %}><summary>{{ b.settings.title }}</summary><div class="in">{{ b.settings.content }}</div></details></div>
+  {%- when 'inbox' -%}<div class="acc" {{ b.shopify_attributes }}><details><summary>{{ b.settings.title }}</summary><div class="in"><div class="boxlist">{% assign rows = b.settings.items | newline_to_br | split: '<br />' %}{% for r in rows %}{% assign pr = r | strip | split: '|' %}{% if pr.size > 1 %}<div><strong>{{ pr[0] }}</strong>{{ pr[1] }}</div>{% endif %}{% endfor %}</div></div></details></div>
+  {%- when '@app' -%}{% render b %}
+  {%- endcase -%}
+  {%- endfor -%}
+ </div>
+</section>
+{%- if section.settings.sticky -%}
+<div class="sticky" data-sticky><div class="wrap sticky__in"><div class="l">{% if product.featured_image %}{{ product.featured_image | image_url: width: 120 | image_tag: alt: '' }}{% endif %}<div style="min-width:0"><strong data-sticky-name>{{ product.title }}</strong><span class="muted small"><span data-sticky-price>{{ cur.price | money_without_trailing_zeros }}</span> · Free shipping</span></div></div><button class="btn btn--p" data-sticky-add type="button"{% unless cur.available %} disabled{% endunless %}>Add to cart</button></div></div>
+{%- endif -%}
+<script type="application/ld+json">{{ product | structured_data }}</script>
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "Sticky add-to-cart bar",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1
+    },
+    {
+      "type": "buy",
+      "name": "Bundle picker + buy buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "picker_label",
+          "label": "Picker label",
+          "default": "Choose your bundle"
+        }
+      ]
+    },
+    {
+      "type": "assurances",
+      "name": "Assurances",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "a1",
+          "label": "1",
+          "default": "Free shipping"
+        },
+        {
+          "type": "text",
+          "id": "a2",
+          "label": "2",
+          "default": "30-day returns"
+        },
+        {
+          "type": "text",
+          "id": "a3",
+          "label": "3",
+          "default": "1-year warranty"
+        }
+      ]
+    },
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Ages & development"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content"
+        },
+        {
+          "type": "checkbox",
+          "id": "open",
+          "label": "Open by default",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "inbox",
+      "name": "What’s in the box",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "What’s included"
+        },
+        {
+          "type": "textarea",
+          "id": "items",
+          "label": "Items (one per line: number|name)",
+          "default": "8|Long noodles\n8|Medium noodles\n6|Short noodles\n10|6-way connectors\n2|4-way connectors\n4|Wheels\n1|Booklet of 28 creations"
+        }
+      ]
+    },
+    {
+      "type": "@app"
+    }
+  ]
+}
+{% endschema %}

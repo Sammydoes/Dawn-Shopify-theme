@@ -1,0 +1,98 @@
+<section class="band" id="bundles"><div class="wrap sec"><h2 class="center" style="margin-bottom:12px">{{ section.settings.heading }}</h2><p class="center lead" style="margin:0 auto 36px">{{ section.settings.text }}</p>
+<div class="cmp">{% for b in section.blocks %}<div class="plan{% if b.settings.highlight %} plan--hl{% endif %}" {{ b.shopify_attributes }}>{% if b.settings.highlight %}<span class="badge">{{ b.settings.badge }}</span>{% endif %}<h3>{{ b.settings.name }}</h3><strong class="big">{{ b.settings.price }} {% if b.settings.compare != blank %}<s>{{ b.settings.compare }}</s>{% endif %}</strong><ul class="muted">{% assign ls = b.settings.lines | newline_to_br | split: '<br />' %}{% for l in ls %}<li>{{ l | strip }}</li>{% endfor %}</ul><a class="btn {% if b.settings.highlight %}btn--p{% else %}btn--o{% endif %} btn--block" style="margin-top:auto" href="{{ b.settings.url }}">{{ b.settings.button }}</a></div>{% endfor %}</div></div></section>
+{% schema %}
+{
+  "name": "Compare plans",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Which is right for you?"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Most families with two or more kids pick the double set."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "plan",
+      "name": "Plan",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        },
+        {
+          "type": "text",
+          "id": "compare",
+          "label": "Compare price"
+        },
+        {
+          "type": "textarea",
+          "id": "lines",
+          "label": "Lines (one per line)"
+        },
+        {
+          "type": "text",
+          "id": "button",
+          "label": "Button"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "checkbox",
+          "id": "highlight",
+          "label": "Highlight",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Best value"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Compare plans",
+      "blocks": [
+        {
+          "type": "plan",
+          "settings": {
+            "name": "1 Play Set",
+            "price": "$129",
+            "lines": "50 pieces\nBuilds for 1–2 kids",
+            "button": "Choose 1 set"
+          }
+        },
+        {
+          "type": "plan",
+          "settings": {
+            "name": "2 Play Sets",
+            "price": "$228",
+            "compare": "$320",
+            "lines": "100 pieces\nBuilds for siblings & playdates",
+            "button": "Choose 2 sets",
+            "highlight": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

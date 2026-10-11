@@ -1,0 +1,48 @@
+<section class="wrap" style="padding-bottom:clamp(56px,7vw,112px)"><div class="offer"><div class="offer__t"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h2>{{ section.settings.heading }}</h2><p>{{ section.settings.text }}</p><a class="btn btn--c" style="height:60px;padding:0 30px;font-size:17px" href="{{ section.settings.url }}">{{ section.settings.button }}</a></div>
+<div class="offer__i">{% render 'img', image: section.settings.image, fallback: '/cdn/shop/files/DSC_8971_copy_203d53b8-c357-4a62-818b-685a9dcb6a6c.jpg?width=1400', alt: '', cls: 'cover' %}</div></div></section>
+{% schema %}
+{
+  "name": "Offer banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Sibling & playdate bundle"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Two sets. <em>Twice</em> the fort."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Add a second set for just $99 and build castles big enough for the whole crew. Discount applies automatically."
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button",
+      "default": "Get 2 sets for $228"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Button link"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer banner"
+    }
+  ]
+}
+{% endschema %}

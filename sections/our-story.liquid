@@ -1,0 +1,78 @@
+<section class="wrap" style="padding-top:clamp(32px,5vw,72px);padding-bottom:clamp(40px,5vw,72px)"><div class="split">
+ <div style="position:relative;aspect-ratio:4/5;max-height:760px;border-radius:32px;overflow:hidden;background:#F2EADF">{% render 'img', image: section.settings.image, fallback: '/cdn/shop/files/image_8_copy.png?width=1400', alt: section.settings.name, cls: 'cover' %}</div>
+ <div style="display:flex;flex-direction:column;gap:20px"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h1 style="font-size:clamp(48px,6.4vw,104px);line-height:1">{{ section.settings.heading }}</h1><strong style="font-size:clamp(20px,1.8vw,26px)">{{ section.settings.name }}</strong></div>
+</div></section>
+<section class="wrap" style="padding-bottom:clamp(64px,8vw,128px)"><div class="prose">{{ section.settings.story }}{% if section.settings.quote != blank %}<blockquote style="margin:1em 0;font-family:'Instrument Serif',serif;font-size:clamp(28px,3vw,42px);line-height:1.15;color:var(--ink)">“{{ section.settings.quote }}”</blockquote>{% endif %}{{ section.settings.story_2 }}</div></section>
+<section class="wrap" style="padding-bottom:clamp(64px,8vw,128px)"><div class="offer" style="background:var(--ink);padding:clamp(32px,5vw,72px);gap:clamp(24px,4vw,64px);align-items:center"><div><span class="eyebrow" style="color:var(--yellow)">Our mission</span><h2 style="margin-top:14px;font-size:clamp(36px,4.4vw,62px)">{{ section.settings.mission_title }}</h2></div><div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start"><p style="font-size:clamp(17px,1.4vw,20px);color:#C9CAD3">{{ section.settings.mission }}</p>{% if section.settings.button != blank %}<a class="btn btn--y" href="{{ section.settings.button_url }}">{{ section.settings.button }}</a>{% endif %}</div></div></section>
+{% schema %}
+{
+  "name": "Our story",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Family owned · Inspired by three generations"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "A note from <em>our founder.</em>"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Greg Olson (aka Grandpa Tufts)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Photo"
+    },
+    {
+      "type": "richtext",
+      "id": "story",
+      "label": "Story (before quote)"
+    },
+    {
+      "type": "text",
+      "id": "quote",
+      "label": "Pull quote"
+    },
+    {
+      "type": "richtext",
+      "id": "story_2",
+      "label": "Story (after quote)"
+    },
+    {
+      "type": "text",
+      "id": "mission_title",
+      "label": "Mission title",
+      "default": "Imagine. Build. Play."
+    },
+    {
+      "type": "textarea",
+      "id": "mission",
+      "label": "Mission text"
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button",
+      "default": "Shop the Play Set"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our story"
+    }
+  ]
+}
+{% endschema %}

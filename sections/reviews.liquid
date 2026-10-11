@@ -1,0 +1,54 @@
+<section class="dark"><div class="wrap sec"><div class="head"><h2 style="max-width:760px">{{ section.settings.heading }}</h2><span class="stars" style="font-size:22px">★★★★★</span></div>
+<div class="grid3">{% for b in section.blocks %}<figure class="rev" {{ b.shopify_attributes }}><blockquote>“{{ b.settings.quote }}”</blockquote><figcaption><i>{{ b.settings.name | slice: 0 }}</i><span><strong>{{ b.settings.name }}</strong><small>{{ b.settings.city }} · Verified buyer</small></span></figcaption></figure>{% endfor %}</div></div></section>
+{% schema %}
+{
+  "name": "Reviews",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Parents say it’s the toy that <em>beats the screen.</em>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "quote",
+          "label": "Quote"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name"
+        },
+        {
+          "type": "text",
+          "id": "city",
+          "label": "City"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Reviews",
+      "blocks": [
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        },
+        {
+          "type": "review"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

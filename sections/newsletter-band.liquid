@@ -1,0 +1,31 @@
+<section class="wrap" style="padding-bottom:clamp(56px,7vw,112px)"><div class="nlband"><h2 style="font-size:clamp(34px,4vw,56px)">{{ section.settings.heading }}</h2><div style="display:flex;flex-direction:column;gap:12px"><p style="font-size:17px">{{ section.settings.text }}</p>{% form 'customer' %}<input type="hidden" name="contact[tags]" value="newsletter,printable"><input type="email" name="contact[email]" placeholder="Your email" required aria-label="Email"><button class="btn btn--ink" type="submit">{% if form.posted_successfully? %}Sent ✓{% else %}{{ section.settings.button }}{% endif %}</button>{% endform %}</div></div></section>
+{% schema %}
+{
+  "name": "Newsletter band",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Free printable: <em>10 bonus builds.</em>"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Pop in your email and we’ll send the PDF, plus a new build idea each month."
+    },
+    {
+      "type": "text",
+      "id": "button",
+      "label": "Button",
+      "default": "Send it"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter band"
+    }
+  ]
+}
+{% endschema %}

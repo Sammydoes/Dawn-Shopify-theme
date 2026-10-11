@@ -1,0 +1,9 @@
+<section class="wrap sec"><h1 style="font-size:clamp(40px,5vw,72px);margin-bottom:32px">Your cart</h1>
+{%- if cart.item_count == 0 -%}<p class="lead">Your cart is empty.</p><a class="btn btn--p" style="margin-top:20px" href="{{ routes.all_products_collection_url }}">Continue shopping</a>
+{%- else -%}<form action="{{ routes.cart_url }}" method="post"><div>{% for i in cart.items %}<div class="cartrow">{% if i.image %}{{ i.image | image_url: width: 200 | image_tag: alt: i.title }}{% else %}<div></div>{% endif %}<div><a href="{{ i.url }}"><strong>{{ i.product.title }}</strong></a>{% unless i.product.has_only_default_variant %}<div class="muted small">{{ i.variant.title }}</div>{% endunless %}<div class="row small" style="margin-top:8px"><input type="number" name="updates[]" value="{{ i.quantity }}" min="0" style="width:64px;height:40px;border-radius:999px;border:1.5px solid #D9CFC0;text-align:center;font:inherit" aria-label="Quantity"><a href="{{ i.url_to_remove }}">Remove</a></div></div><strong>{{ i.final_line_price | money }}</strong></div>{% endfor %}</div>
+<div style="max-width:420px;margin:32px 0 0 auto;display:flex;flex-direction:column;gap:12px"><div class="row" style="justify-content:space-between;font-size:20px"><span>Subtotal</span><strong>{{ cart.total_price | money }}</strong></div><span class="muted small">Shipping and discounts calculated at checkout.</span><button class="btn btn--o btn--block" name="update" type="submit">Update cart</button><button class="btn btn--p btn--block" name="checkout" type="submit">Checkout</button></div></form>{%- endif -%}</section>
+{% schema %}
+{
+  "name": "Cart"
+}
+{% endschema %}

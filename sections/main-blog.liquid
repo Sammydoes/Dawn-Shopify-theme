@@ -1,142 +1,35 @@
-{{ 'component-article-card.css' | asset_url | stylesheet_tag }}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
-{{ 'section-main-blog.css' | asset_url | stylesheet_tag }}
-
-{%- style -%}
-  .section-{{ section.id }}-padding {
-    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
-    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
-  }
-
-  @media screen and (min-width: 750px) {
-    .section-{{ section.id }}-padding {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
-    }
-  }
-{%- endstyle -%}
-
-{%- paginate blog.articles by 6 -%}
-  <div class="main-blog page-width section-{{ section.id }}-padding">
-    <h1 class="title--primary{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ blog.title | escape }}
-    </h1>
-
-    <div class="blog-articles {% if section.settings.layout == 'collage' %}blog-articles--collage{% endif %}">
-      {%- for article in blog.articles -%}
-        <div
-          class="blog-articles__article article{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-          {% if settings.animations_reveal_on_scroll %}
-            data-cascade
-            style="--animation-order: {{ forloop.index }};"
-          {% endif %}
-        >
-          {%- render 'article-card',
-            article: article,
-            media_height: section.settings.image_height,
-            media_aspect_ratio: article.image.aspect_ratio,
-            show_image: section.settings.show_image,
-            show_date: section.settings.show_date,
-            show_author: section.settings.show_author,
-            show_excerpt: true
-          -%}
-        </div>
-      {%- endfor -%}
-    </div>
-
-    {%- if paginate.pages > 1 -%}
-      {%- render 'pagination', paginate: paginate -%}
-    {%- endif -%}
-  </div>
+<section class="wrap" style="padding-top:clamp(40px,6vw,96px);padding-bottom:32px"><div class="head" style="margin:0"><div style="display:flex;flex-direction:column;gap:14px"><span class="eyebrow">{{ section.settings.eyebrow }}</span><h1 style="font-size:clamp(48px,7vw,104px)">{{ section.settings.heading }}</h1></div><p class="lead" style="max-width:380px">{{ section.settings.text }}</p></div></section>
+{%- paginate blog.articles by 12 -%}
+{%- assign show_feat = false -%}{%- if paginate.current_page == 1 and current_tags == blank and blog.articles.size > 0 -%}{%- assign show_feat = true -%}{%- endif -%}
+{%- if show_feat -%}{%- assign a = blog.articles.first -%}
+<section class="wrap"><a class="bfeat" href="{{ a.url }}"><div class="bfeat__i">{% if a.image %}{{ a.image | image_url: width: 1600 | image_tag: class: 'cover', alt: a.title, loading: 'eager' }}{% else %}<div class="ph cover"></div>{% endif %}</div><div class="bfeat__t"><div class="row small">{% if a.tags.first %}<span class="badge tag--yellow">{{ a.tags.first }}</span>{% endif %}<span class="muted">{{ a.published_at | date: '%b %-d, %Y' }}</span></div><h2 style="font-size:clamp(32px,3.6vw,52px)">{{ a.title }}</h2><p class="lead">{{ a.excerpt_or_content | strip_html | truncatewords: 28 }}</p><strong style="text-decoration:underline;text-underline-offset:4px">Read the guide</strong></div></a></section>{%- endif -%}
+{%- if blog.all_tags.size > 0 -%}<section class="wrap row" style="padding-top:40px;padding-bottom:8px;gap:8px"><a class="pill{% unless current_tags %} on{% endunless %}" href="{{ blog.url }}">All</a>{% for tg in blog.all_tags %}<a class="pill{% if current_tags contains tg %} on{% endif %}" href="{{ blog.url }}/tagged/{{ tg | handleize }}">{{ tg }}</a>{% endfor %}</section>{%- endif -%}
+<section class="wrap" style="padding-top:24px;padding-bottom:clamp(56px,7vw,112px)"><div class="posts">
+{%- for a in blog.articles -%}{%- if show_feat and forloop.first -%}{%- continue -%}{%- endif -%}
+<a class="post" href="{{ a.url }}"><div class="post__i">{% if a.image %}{{ a.image | image_url: width: 900 | image_tag: class: 'cover', alt: a.title, loading: 'lazy' }}{% else %}<div class="ph cover"></div>{% endif %}</div><div class="post__m">{% if a.tags.first %}<span class="badge tag--yellow">{{ a.tags.first }}</span>{% endif %}<span class="muted">{{ a.published_at | date: '%b %-d, %Y' }}</span></div><h3>{{ a.title }}</h3><p>{{ a.excerpt_or_content | strip_html | truncatewords: 22 }}</p></a>{%- endfor -%}
+</div>{%- if paginate.pages > 1 -%}<div class="pager">{% if paginate.previous %}<a class="pill" href="{{ paginate.previous.url }}">Previous</a>{% endif %}{% if paginate.next %}<a class="pill" href="{{ paginate.next.url }}">Next</a>{% endif %}</div>{%- endif -%}</section>
 {%- endpaginate -%}
-
 {% schema %}
 {
-  "name": "t:sections.main-blog.name",
-  "tag": "section",
-  "class": "section",
+  "name": "Blog",
   "settings": [
     {
-      "type": "select",
-      "id": "layout",
-      "options": [
-        {
-          "value": "grid",
-          "label": "t:sections.main-blog.settings.layout.options__1.label"
-        },
-        {
-          "value": "collage",
-          "label": "t:sections.main-blog.settings.layout.options__2.label"
-        }
-      ],
-      "default": "collage",
-      "label": "t:sections.main-blog.settings.layout.label"
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The Build Journal"
     },
     {
-      "type": "checkbox",
-      "id": "show_image",
-      "default": true,
-      "label": "t:sections.main-blog.settings.show_image.label"
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Ideas for <em>big</em> play."
     },
     {
-      "type": "select",
-      "id": "image_height",
-      "options": [
-        {
-          "value": "adapt",
-          "label": "t:sections.main-blog.settings.image_height.options__1.label"
-        },
-        {
-          "value": "small",
-          "label": "t:sections.main-blog.settings.image_height.options__2.label"
-        },
-        {
-          "value": "medium",
-          "label": "t:sections.main-blog.settings.image_height.options__3.label"
-        },
-        {
-          "value": "large",
-          "label": "t:sections.main-blog.settings.image_height.options__4.label"
-        }
-      ],
-      "default": "medium",
-      "label": "t:sections.main-blog.settings.image_height.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_date",
-      "default": true,
-      "label": "t:sections.main-blog.settings.show_date.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_author",
-      "default": false,
-      "label": "t:sections.main-blog.settings.show_author.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 36
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 36
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Build guides, screen-free game plans and the science of how kids learn through play."
     }
   ]
 }

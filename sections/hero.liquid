@@ -1,0 +1,100 @@
+<section class="wrap sec--tight" style="padding-top:clamp(20px,3vw,40px)"><div class="hero">
+ <div class="hero__txt">
+  <div class="kicker"><span class="dots"><i style="background:var(--pink)"></i><i style="background:var(--yellow)"></i><i style="background:var(--teal)"></i></span>{{ section.settings.kicker }}</div>
+  <h1>{{ section.settings.heading }}</h1>
+  <p class="lead">{{ section.settings.text }}</p>
+  <div class="row">{% if section.settings.btn1 != blank %}<a class="btn btn--p" style="height:60px;padding:0 30px;font-size:17px" href="{{ section.settings.btn1_url }}">{{ section.settings.btn1 }}</a>{% endif %}{% if section.settings.btn2 != blank %}<a class="btn btn--o" style="height:60px;font-size:17px" href="{{ section.settings.btn2_url }}">{{ section.settings.btn2 }}</a>{% endif %}</div>
+  <div class="row small muted" style="gap:14px">{% render 'stars' %}<span>{{ section.settings.proof }}</span></div>
+ </div>
+ <div class="hero__img">{% render 'img', image: section.settings.image, fallback: '/cdn/shop/files/DSC_8971.jpg?width=1800', alt: 'Child playing in a Noodlelox build', cls: 'cover', sizes: '(min-width:900px) 50vw, 100vw' %}
+  <div class="hero__cards">
+   {% if section.settings.built_title != blank %}<div class="chip">{% if section.settings.built_image %}{{ section.settings.built_image | image_url: width: 200 | image_tag: alt: '' }}{% endif %}<div><small>{{ section.settings.built_label }}</small><strong>{{ section.settings.built_title }}</strong></div></div>{% endif %}
+   {% if section.settings.sticker != blank %}<div class="sticker">{{ section.settings.sticker }}</div>{% endif %}
+  </div></div>
+</div></section>
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Life-sized STEM play · Ages 3+"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Build it big.<br><em>Play</em> all day."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "One set of soft foam noodles and snap-tight connectors becomes forts, rockets, cars and pirate ships — big enough to climb inside, and all made by your kids."
+    },
+    {
+      "type": "text",
+      "id": "btn1",
+      "label": "Button 1",
+      "default": "Shop the Play Set"
+    },
+    {
+      "type": "url",
+      "id": "btn1_url",
+      "label": "Button 1 link"
+    },
+    {
+      "type": "text",
+      "id": "btn2",
+      "label": "Button 2",
+      "default": "See what kids build"
+    },
+    {
+      "type": "url",
+      "id": "btn2_url",
+      "label": "Button 2 link"
+    },
+    {
+      "type": "text",
+      "id": "proof",
+      "label": "Proof line",
+      "default": "Families across America love it · Free shipping · 30-day returns"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "text",
+      "id": "built_label",
+      "label": "Chip label",
+      "default": "Built in this photo"
+    },
+    {
+      "type": "text",
+      "id": "built_title",
+      "label": "Chip title",
+      "default": "The Playhouse · 10 min"
+    },
+    {
+      "type": "image_picker",
+      "id": "built_image",
+      "label": "Chip image"
+    },
+    {
+      "type": "text",
+      "id": "sticker",
+      "label": "Sticker",
+      "default": "2nd set just $99"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

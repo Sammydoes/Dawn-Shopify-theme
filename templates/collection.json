@@ -1,0 +1,59 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-collection",
+      "settings": {
+        "image": "shopify://shop_images/DSC_9093.jpg"
+      }
+    },
+    "compare": {
+      "type": "compare",
+      "settings": {
+        "heading": "Build bigger. Save more.",
+        "text": "Pick the bundle that fits your crew."
+      },
+      "blocks": {
+        "plan_1": {
+          "type": "plan",
+          "settings": {
+            "name": "All You Need",
+            "price": "$149.99",
+            "compare": "$158.99",
+            "lines": "1 × 50-Piece Play Set\n1 × Carry Bag\nEverything to start creating",
+            "button": "Add bundle",
+            "highlight": false,
+            "badge": "Best value"
+          }
+        },
+        "plan_2": {
+          "type": "plan",
+          "settings": {
+            "name": "2 Play Sets",
+            "price": "$228",
+            "compare": "$258",
+            "lines": "2 × 50-Piece Play Set\n100 pieces for siblings & playdates\nSecond set just $99",
+            "button": "Add bundle",
+            "highlight": false,
+            "badge": "Most popular"
+          }
+        }
+      },
+      "block_order": [
+        "plan_1",
+        "plan_2"
+      ]
+    },
+    "byo": {
+      "type": "bundle-builder",
+      "settings": {
+        "set_product": "noodlelox50piecekit",
+        "bag_product": "noodlelox-carry-bag"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "byo",
+    "compare"
+  ]
+}

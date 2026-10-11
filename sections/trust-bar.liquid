@@ -1,0 +1,46 @@
+<section class="wrap sec--tight"><div class="trust">{% for b in section.blocks %}<div {{ b.shopify_attributes }}><i style="background:{{ b.settings.color }}"></i><p><strong>{{ b.settings.title }}</strong><span>{{ b.settings.sub }}</span></p></div>{% endfor %}</div></section>
+{% schema %}
+{
+  "name": "Trust bar",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "sub",
+          "label": "Subtitle"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Dot color",
+          "default": "#FBE3EA"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust bar",
+      "blocks": [
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        },
+        {
+          "type": "item"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

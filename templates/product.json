@@ -1,0 +1,112 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "settings": {
+        "sticky": false
+      },
+      "blocks": {
+        "title_1": {
+          "type": "title",
+          "settings": {}
+        },
+        "price_2": {
+          "type": "price",
+          "settings": {}
+        },
+        "description_3": {
+          "type": "description",
+          "settings": {}
+        },
+        "buy_4": {
+          "type": "buy",
+          "settings": {
+            "picker_label": "Choose your bundle"
+          }
+        },
+        "assurances_5": {
+          "type": "assurances",
+          "settings": {
+            "a1": "Free shipping",
+            "a2": "30-day returns",
+            "a3": "1-year warranty"
+          }
+        },
+        "inbox_6": {
+          "type": "inbox",
+          "settings": {
+            "title": "What’s included"
+          }
+        },
+        "accordion_7": {
+          "type": "accordion",
+          "settings": {
+            "title": "Ages & development",
+            "content": "<p>Made for ages 3+ and grows with them.</p>"
+          }
+        },
+        "accordion_9": {
+          "type": "accordion",
+          "settings": {
+            "title": "Shipping, returns & warranty",
+            "content": "<p>Free shipping on all orders. Contact us within 30 days of delivery for a refund with no restocking fee. Covered by a 1-year limited warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "title_1",
+        "price_2",
+        "description_3",
+        "buy_4",
+        "assurances_5",
+        "inbox_6",
+        "accordion_7",
+        "accordion_9"
+      ]
+    },
+    "how": {
+      "type": "how-it-works",
+      "settings": {},
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "title": "Open the box",
+            "text": "No tools, no batteries, no setup. Tip it out and pick a build.",
+            "image": "shopify://shop_images/DSC_9122.jpg"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "title": "Snap it together",
+            "text": "Patent-pending Quick Connection holds tight by friction and pulls apart easily for the next idea.",
+            "image": "shopify://shop_images/DSC_9103.jpg"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "title": "Climb in and play",
+            "text": "Life-sized builds kids can sit in, steer and share.",
+            "image": "shopify://shop_images/DSC_9118.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3"
+      ]
+    },
+    "printable": {
+      "type": "newsletter-band",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "how",
+    "printable"
+  ]
+}

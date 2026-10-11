@@ -1,0 +1,346 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "btn1": "Shop the Play Set",
+        "btn2": "See what kids build",
+        "btn2_url": "#creations",
+        "image": "shopify://shop_images/DSC_8971.jpg",
+        "built_image": "shopify://shop_images/exec-d9393afd-c78d-4534-b3ae-be94681c7440.png",
+        "btn1_url": "shopify://products/noodlelox50piecekit"
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "settings": {},
+      "blocks": {
+        "item_1": {
+          "type": "item",
+          "settings": {
+            "title": "Free shipping",
+            "sub": "On every order",
+            "color": "#FBE3EA"
+          }
+        },
+        "item_2": {
+          "type": "item",
+          "settings": {
+            "title": "30-day happiness guarantee",
+            "sub": "No restocking fee",
+            "color": "#FDF3CF"
+          }
+        },
+        "item_3": {
+          "type": "item",
+          "settings": {
+            "title": "1-year warranty",
+            "sub": "Built to be played hard",
+            "color": "#DDF2F3"
+          }
+        }
+      },
+      "block_order": [
+        "item_1",
+        "item_2",
+        "item_3"
+      ]
+    },
+    "creations": {
+      "type": "creations",
+      "settings": {},
+      "blocks": {
+        "creation_1": {
+          "type": "creation",
+          "settings": {
+            "name": "Playhouse",
+            "level": "Easy",
+            "time": "10 min",
+            "image": "shopify://shop_images/exec-d9393afd-c78d-4534-b3ae-be94681c7440.png"
+          }
+        },
+        "creation_2": {
+          "type": "creation",
+          "settings": {
+            "name": "Rocket",
+            "level": "Medium",
+            "time": "15 min",
+            "image": "shopify://shop_images/Rocket_05_realistic.png"
+          }
+        },
+        "creation_3": {
+          "type": "creation",
+          "settings": {
+            "name": "School Bus",
+            "level": "Medium",
+            "time": "15 min",
+            "image": "shopify://shop_images/School_Bus_01_realistic.png"
+          }
+        },
+        "creation_4": {
+          "type": "creation",
+          "settings": {
+            "name": "Helicopter",
+            "level": "Tricky",
+            "time": "20 min",
+            "image": "shopify://shop_images/Helicopter_03_realistic.png"
+          }
+        },
+        "creation_5": {
+          "type": "creation",
+          "settings": {
+            "name": "Race Car",
+            "level": "Easy",
+            "time": "10 min",
+            "image": "shopify://shop_images/Car_06_realistic.png"
+          }
+        },
+        "creation_6": {
+          "type": "creation",
+          "settings": {
+            "name": "Phone Booth",
+            "level": "Easy",
+            "time": "8 min",
+            "image": "shopify://shop_images/Phone_Booth_04_realistic.png"
+          }
+        },
+        "creation_7": {
+          "type": "creation",
+          "settings": {
+            "name": "Bird",
+            "level": "Medium",
+            "time": "12 min",
+            "image": "shopify://shop_images/Bird_03_realistic.png"
+          }
+        },
+        "creation_8": {
+          "type": "creation",
+          "settings": {
+            "name": "Barbell",
+            "level": "Easy",
+            "time": "5 min",
+            "image": "shopify://shop_images/Barbell_05_realistic.png"
+          }
+        }
+      },
+      "block_order": [
+        "creation_1",
+        "creation_2",
+        "creation_3",
+        "creation_4",
+        "creation_5",
+        "creation_6",
+        "creation_7",
+        "creation_8"
+      ]
+    },
+    "benefits": {
+      "type": "benefits",
+      "settings": {},
+      "blocks": {
+        "card_1": {
+          "type": "card",
+          "settings": {
+            "tag": "STEM",
+            "color": "yellow",
+            "heading": "Engineering, disguised as fun.",
+            "text": "Balance, structure and problem-solving, learned by trying, wobbling and trying again.",
+            "image": "shopify://shop_images/DSC_9003_0adfc176-de53-4619-8510-d4ca19fce001.jpg"
+          }
+        },
+        "card_2": {
+          "type": "card",
+          "settings": {
+            "tag": "Active play",
+            "color": "teal",
+            "heading": "Off the couch, on the move.",
+            "text": "Life-sized builds get whole bodies involved: crawling, steering, lifting and climbing in.",
+            "image": "shopify://shop_images/DSC_9030.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "card_1",
+        "card_2"
+      ]
+    },
+    "featured": {
+      "type": "featured-product",
+      "settings": {
+        "product": "noodlelox50piecekit"
+      },
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "number": "50",
+            "label": "pieces"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "number": "28",
+            "label": "guided builds"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "number": "0",
+            "label": "tools or setup"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3"
+      ]
+    },
+    "video": {
+      "type": "video-banner",
+      "settings": {
+        "image": "shopify://shop_images/DSC_9093.jpg",
+        "video_url": "https://youtu.be/TZPyGwrx4dE"
+      }
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {},
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "name": "Michael J.",
+            "city": "Austin, TX",
+            "quote": "Best birthday gift! Getting our kids active with toys that don’t include screens is difficult — until they saw Noodlelox. Now it’s all they want!"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "name": "Mary Anne H.",
+            "city": "Phoenix, AZ",
+            "quote": "My grandkids are 18 months, 2 and 7. We started with the booklet, and now we’re creating our own designs!"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "name": "Sarah F.",
+            "city": "San Clemente, CA",
+            "quote": "My kids absolutely love Noodlelox, and so do we. It’s very durable and a great non-screen option. Their favorite toy now!"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3"
+      ]
+    },
+    "ugc": {
+      "type": "ugc",
+      "settings": {},
+      "blocks": {
+        "photo_1": {
+          "type": "photo",
+          "settings": {}
+        },
+        "photo_2": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/DSC_9118.jpg"
+          }
+        },
+        "photo_3": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/DSC_8991.jpg"
+          }
+        },
+        "photo_4": {
+          "type": "photo",
+          "settings": {
+            "image": "shopify://shop_images/DSC_9103.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "photo_1",
+        "photo_2",
+        "photo_3",
+        "photo_4"
+      ]
+    },
+    "offer": {
+      "type": "offer-banner",
+      "settings": {
+        "image": "shopify://shop_images/DSC_8971_copy_203d53b8-c357-4a62-818b-685a9dcb6a6c.jpg",
+        "url": "shopify://collections/all",
+        "button": "See the bundles"
+      }
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {},
+      "blocks": {
+        "faq_1": {
+          "type": "faq",
+          "settings": {
+            "q": "How many creations can one set make?",
+            "a": "<p>Hundreds. Each set includes a booklet of 28 designs of varying difficulty. After that, it’s up to their imagination.</p>"
+          }
+        },
+        "faq_2": {
+          "type": "faq",
+          "settings": {
+            "q": "Is it safe for little ones?",
+            "a": "<p>Noodles are soft polyethylene foam and connectors are injection-molded polypropylene. Designed for ages 3+ with grown-up supervision for the youngest builders.</p>"
+          }
+        },
+        "faq_3": {
+          "type": "faq",
+          "settings": {
+            "q": "Does it need any assembly?",
+            "a": "<p>No setup, no tools. Everything is ready out of the box.</p>"
+          }
+        },
+        "faq_4": {
+          "type": "faq",
+          "settings": {
+            "q": "Can I use my own pool noodles?",
+            "a": "<p>Our noodles and connectors are made together for a precise friction fit. Other noodles may work, but Noodlelox noodles perform best.</p>"
+          }
+        },
+        "faq_5": {
+          "type": "faq",
+          "settings": {
+            "q": "What if we don’t love it?",
+            "a": "<p>Contact us within 30 days of delivery for a full refund, with no restocking fee. Every set also carries a 1-year limited warranty.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_1",
+        "faq_2",
+        "faq_3",
+        "faq_4",
+        "faq_5"
+      ]
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "creations",
+    "benefits",
+    "featured",
+    "video",
+    "reviews",
+    "ugc",
+    "offer",
+    "faq"
+  ]
+}
